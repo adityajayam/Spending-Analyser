@@ -12,6 +12,12 @@ import org.junit.Assert.*
 class ExampleUnitTest {
     @Test
     fun addition_isCorrect() {
-        assertEquals(4, 2 + 2)
+        val matchString =
+            "INR 699.00 spent on ICICI Bank Card XX7012 on 25-May-24 at LIFE STYLE INTE. Avl Lmt: INR 95,027.04. To dispute,call 18002662/SMS BLOCK 7012 to 9215676766"
+        val notMatchString =
+            "THB 507.98 spent using ICICI Bank Card XX7012 on 16-Oct-24 on WWW ABHIBUS COM. Avl Limit: INR 2,09,249.25. If not you, call 1800 2662/SMS BLOCK 7012 to 9215676766."
+
+        val d = Utils.parseTransactionDetailsUsingRegex("1", notMatchString)
+        assertNull(d)
     }
 }
