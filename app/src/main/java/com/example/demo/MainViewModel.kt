@@ -38,7 +38,7 @@ class MainViewModel(private val transactionRepository: TransactionRepository) : 
                 for (i in 0..<readSmsCursor.count) {
                     val messageBody = readSmsCursor.getString(readSmsCursor.getColumnIndex("body"))
                     val messageId = readSmsCursor.getString(readSmsCursor.getColumnIndex("_id"))
-                    if (messageBody.contains("ICICI Bank Card XX") && messageId.toInt() > lastMessageId.toInt()) {
+                    if (messageBody.contains("ICICI Bank Card XX") && messageId.toInt() > lastMessageId) {
                         Log.e(TAG, messageBody)
                         val txnData = Utils.parseTransactionDetailsUsingRegex(
                             readSmsCursor.getString(
